@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for radio buttons and their labels */
+.radio-group {
+    text-align: right;
+}
+
+.radio-group label {
+    float: left;
+    clear: left;
+    margin-right: 5px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-right: 5px;
+    float: right;
+}
+
+/* Add margin to the "Select Group" label */
+label[for="group"] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.student-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}

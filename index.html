@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>Contact Form</h1>
     <form id="contact-form">
@@ -30,8 +32,9 @@
             <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="range">Range (1-10):</label>
+            <strong>Range:</strong> <span id="range-value">1</span><br>
             <input type="range" id="range" name="range" min="1" max="10">
+            
         </div>
         <div class="form-group">
             <label for="group">Select Group:</label>
@@ -42,6 +45,10 @@
                 <label for="group2">FEUA 2</label>
                 <input type="radio" id="group3" name="group" value="FEUA 3">
                 <label for="group3">FEUA 3</label>
+                <input type="radio" id="group4" name="group" value="FEUA 4">
+                <label for="group3">FEUA 4</label>
+                <input type="radio" id="group5" name="group" value="FEUA 5">
+                <label for="group3">FEUA 5</label>
                 <!-- Add more radio buttons as needed -->
             </div>
         </div>
@@ -71,4 +78,5 @@
     <div id="students-list"></div>
     <script src="script.js"></script>
 </body>
+
 </html>

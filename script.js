@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
     const studentsList = document.getElementById("students-list");
+    const rangeInput = document.getElementById("range");
+    const rangeValue = document.getElementById("range-value");
+
+    // Update the range value on slider change
+    rangeInput.addEventListener("input", function () {
+        rangeValue.textContent = rangeInput.value;
+    });
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -10,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const age = document.getElementById("age").value;
         const telephone = document.getElementById("telephone").value;
         const email = document.getElementById("email").value;
-        const range = document.getElementById("range").value;
+        const range = rangeInput.value;
         const group = document.querySelector('input[name="group"]:checked').value;
         const languages = [...document.querySelectorAll('input[name="languages"]:checked')].map(input => input.value).join(", ");
 
@@ -47,4 +54,3 @@ document.addEventListener("DOMContentLoaded", function () {
         form.reset();
     });
 });
-
