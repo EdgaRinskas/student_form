@@ -9,34 +9,37 @@
 </head>
 
 <body>
-    <h1>Contact Form</h1>
-    <form id="contact-form">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" required>
-        </div>
-        <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
-        </div>
-        <div class="form-group">
-            <label for="telephone">Telephone Number:</label>
-            <input type="number" id="telephone" name="telephone">
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <strong>Range:</strong> <span id="range-value">1</span><br>
-            <input type="range" id="range" name="range" min="1" max="10">
-            
-        </div>
-        <div class="form-group">
+    <fieldset>
+        <legend><h1>Contact Form</h1></legend>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Telephone Number:</label>
+                <input type="number" id="telephone" name="telephone">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <strong>Range:</strong> <span id="range-value">1</span><br>
+                <input type="range" id="range" name="range" min="1" max="10">
+                
+            </div>
+    </fieldset>
+    <fieldset>
+        <legend>Select group</legend>
             <label for="group">Select Group:</label>
             <div id="group">
                 <input type="radio" id="group1" name="group" value="FEUA 1">
@@ -50,10 +53,10 @@
                 <input type="radio" id="group5" name="group" value="FEUA 5">
                 <label for="group3">FEUA 5</label>
                 <!-- Add more radio buttons as needed -->
-            </div>
         </div>
-        <div class="form-group">
-            <label for="languages">Select Languages:</label>
+    </fieldset>
+    <fieldset>
+        <legend>Select Languages:</legend>
             <div id="languages">
                 <input type="checkbox" id="lietuviu" name="languages" value="lietuvių">
                 <label for="lietuviu">lietuvių</label>
@@ -73,9 +76,11 @@
                 <label for="ispanu">ispanų</label>
             </div>
         </div>
-        <button type="submit">Submit</button>
+    </fieldset>
+    <button type="submit">Submit</button>
     </form>
     <div id="students-list"></div>
+    <div id="alert-message"></div>
     <script src="script.js"></script>
 </body>
 
