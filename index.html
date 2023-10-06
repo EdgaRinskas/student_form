@@ -1,87 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <fieldset>
-        <legend><h1>Contact Form</h1></legend>
-        <form id="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+    <div class="contact_form">
+        <form id="contactForm">
+            <div>
+                <label for="firstName">First Name (required):</label>
+                <input type="text" id="firstName" required>
             </div>
-            <div class="form-group">
-                <label for="surname">Surname:</label>
-                <input type="text" id="surname" name="surname" required>
+            <div>
+                <label for="lastName">Last Name (required):</label>
+                <input type="text" id="lastName" required>
             </div>
-            <div class="form-group">
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
+            <div>
+                <label for="age">Age (required):</label>
+                <input type="number" id="age" required>
             </div>
-            <div class="form-group">
-                <label for="telephone">Telephone Number:</label>
-                <input type="number" id="telephone" name="telephone">
+            <div>
+                <label for="phoneNumber">Phone Number (optional):</label>
+                <input type="tel" id="phoneNumber">
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div>
+                <label for="email">Email (required):</label>
+                <input type="email" id="email" required>
             </div>
-            <div class="form-group">
-                <strong>Range:</strong> <span id="range-value">1</span><br>
-                <input type="range" id="range" name="range" min="1" max="10">
-                
+            <div>
+                <label for="itKnowledge">IT Knowledge (1-10):</label>
+                <input type="range" id="itKnowledge" min="1" max="10">
+                <span id="knowledgeValue">1</span>
             </div>
-    </fieldset>
-    <fieldset>
-        <legend>Select group</legend>
-            <label for="group">Select Group:</label>
-            <div id="group">
-                <input type="radio" id="group1" name="group" value="FEUA 1">
-                <label for="group1">FEUA 1</label>
-                <input type="radio" id="group2" name="group" value="FEUA 2">
-                <label for="group2">FEUA 2</label>
-                <input type="radio" id="group3" name="group" value="FEUA 3">
-                <label for="group3">FEUA 3</label>
-                <input type="radio" id="group4" name="group" value="FEUA 4">
-                <label for="group3">FEUA 4</label>
-                <input type="radio" id="group5" name="group" value="FEUA 5">
-                <label for="group3">FEUA 5</label>
-                <!-- Add more radio buttons as needed -->
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>Select Languages:</legend>
-            <div id="languages">
-                <input type="checkbox" id="lietuviu" name="languages" value="lietuvių">
-                <label for="lietuviu">lietuvių</label>
-                <input type="checkbox" id="lenku" name="languages" value="lenkų">
-                <label for="lenku">lenkų</label>
-                <input type="checkbox" id="ukrainieciu" name="languages" value="ukrainiečių">
-                <label for="ukrainieciu">ukrainiečių</label>
-                <input type="checkbox" id="rusu" name="languages" value="rusų">
-                <label for="rusu">rusų</label>
-                <input type="checkbox" id="vokieciu" name="languages" value="vokiečių">
-                <label for="vokieciu">vokiečių</label>
-                <input type="checkbox" id="prancuzu" name="languages" value="prancūzų">
-                <label for="prancuzu">prancūzų</label>
-                <input type="checkbox" id="vengru" name="languages" value="vengrų">
-                <label for="vengru">vengrų</label>
-                <input type="checkbox" id="ispanu" name="languages" value="ispanų">
-                <label for="ispanu">ispanų</label>
+            <div>
+                <label>Group:</label>
+                <div>
+                    <input type="radio" name="group" id="group1" value="FEU 1group">
+                    <label for="group1">FEU 1group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="group2" value="FEU 2group">
+                    <label for="group2">FEU 2group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="group3" value="FEU 3group">
+                    <label for="group3">FEU 3group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="group4" value="FEU 4group">
+                    <label for="group4">FEU 4group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="group5" value="FEU 5group">
+                    <label for="group5">FEU 5group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="group6" value="FEU 6group">
+                    <label for="group6">FEU 6group</label>
+                </div>
+                <!-- Add more groups up to 10group -->
             </div>
-        </div>
-    </fieldset>
-    <button type="submit">Submit</button>
-    </form>
+            <div>
+                <label>Languages of Interest:</label>
+                <div>
+                    <input type="checkbox" id="lang1" value="JavaScript">
+                    <label for="lang1">JavaScript</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang2" value="Python">
+                    <label for="lang2">Python</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang3" value="Java">
+                    <label for="lang3">Java</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang4" value="C++">
+                    <label for="lang4">C++</label>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+            <button class="showData">Show Personal Data</button>
+            <button class="deleteStudent">Delete Student</button>
+            <!-- Add the "Hide Personal Data" button next to the "Show Personal Data" button -->
+
+        </form>
+    </div>
+
     <div id="students-list"></div>
-    <div id="alert-message"></div>
+
     <script src="script.js"></script>
 </body>
-
 </html>

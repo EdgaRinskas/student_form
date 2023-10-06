@@ -1,109 +1,89 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contactForm");
     const studentsList = document.getElementById("students-list");
-    const rangeInput = document.getElementById("range");
-    const rangeValue = document.getElementById("range-value");
-    const alertMessage = document.getElementById("alert-message");
 
-    // Update the range value on slider change
-    rangeInput.addEventListener("input", function () {
-        rangeValue.textContent = rangeInput.value;
-    });
-
-    form.addEventListener("submit", function (e) {
+    contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const name = document.getElementById("name").value;
-        const surname = document.getElementById("surname").value;
+        // Get form values
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
         const age = document.getElementById("age").value;
-        const telephone = document.getElementById("telephone").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
         const email = document.getElementById("email").value;
-        const range = rangeInput.value;
+        const itKnowledge = document.getElementById("itKnowledge").value;
         const group = document.querySelector('input[name="group"]:checked').value;
-        const languages = [...document.querySelectorAll('input[name="languages"]:checked')].map(input => input.value).join(", ");
+        const languages = [];
+        document.querySelectorAll('input[type="checkbox"]:checked').forEach(function (checkbox) {
+            languages.push(checkbox.value);
+        });
 
-        // Create a new student item
+        // Create a student item
         const studentItem = document.createElement("div");
         studentItem.classList.add("student-item");
-
-        // Create a button for showing/hiding personal data
-        const showPersonalDataButton = document.createElement("button");
-        showPersonalDataButton.textContent = "Show personal data";
-
-        // Function to handle show/hide personal data button click
-        showPersonalDataButton.addEventListener("click", function () {
-            const personalData = studentItem.querySelector(".personal-data");
-
-            if (personalData.style.display === "none" || !personalData.style.display) {
-                // Show personal data
-                personalData.style.display = "block";
-                showPersonalDataButton.textContent = "Hide personal data";
-            } else {
-                // Hide personal data
-                personalData.style.display = "none";
-                showPersonalDataButton.textContent = "Show personal data";
-            }
-        });
-
-        // Create a button for deleting the student
-        const deleteStudentButton = document.createElement("button");
-        deleteStudentButton.textContent = "Delete student";
-
-        // Function to handle delete student button click
-        deleteStudentButton.addEventListener("click", function () {
-            // Remove the student item from the list
-            studentsList.removeChild(studentItem);
-
-            // Show a confirmation message
-            const deleteMessage = document.createElement("span");
-            deleteMessage.textContent = `Student (${name} ${surname}) has been successfully deleted.`;
-            alertMessage.appendChild(deleteMessage);
-            alertMessage.style.display = "block";
-
-            // Hide the message after 5 seconds
-            setTimeout(function () {
-                alertMessage.removeChild(deleteMessage);
-                alertMessage.style.display = "none";
-            }, 5000);
-        });
-
-        // Create a div for personal data
-        const personalData = document.createElement("div");
-        personalData.classList.add("personal-data");
-        personalData.style.display = "none";
-        personalData.innerHTML = `
-            <strong>Email:</strong> ****<br>
-            <strong>Telephone Number:</strong> ****<br>
-        `;
-
-        // Display student data
         studentItem.innerHTML = `
-            <strong>Name:</strong> ${name}<br>
-            <strong>Surname:</strong> ${surname}<br>
-            <strong>Age:</strong> ${age}<br>
-            <strong>Range:</strong> ${range}<br>
-            <strong>Group:</strong> ${group}<br>
-            <strong>Languages:</strong> ${languages}
+            <p>Name: ${firstName} ${lastName}</p>
+            <p>Age: ${age}</p>
+            <p>Phone Number: <span class="phone-data">${phoneNumber}</span></p>
+            <p>Email: <span class="email-data">${email}</span></p>
+            <p>IT Knowledge: ${itKnowledge}</p>
+            <p>Group: ${group}</p>
+            <p>Languages of Interest: ${languages.join(", ")}</p>
+            <button class="showData">Show Personal Data</button>
+            <button class="hideData" style="display: none;">Hide Personal Data</button>
+            <button class="deleteStudent">Delete Student</button>
         `;
 
-        // Append show personal data, delete student button, and personal data div
-        studentItem.appendChild(showPersonalDataButton);
-        studentItem.appendChild(deleteStudentButton);
-        studentItem.appendChild(personalData);
+        studentsList.prepend(studentItem);
 
-        // Show the alert message
-        alertMessage.textContent = `Student (${name} ${surname}) Created`;
-        alertMessage.style.display = "block";
-
-        // Hide the alert message after 5 seconds
+        // Display a popup message
+        const alertMessage = document.createElement("span");
+        alertMessage.innerText = `Student (${firstName} ${lastName}) Created`;
+        studentsList.insertBefore(alertMessage, studentItem);
         setTimeout(function () {
             alertMessage.style.display = "none";
         }, 5000);
 
-        // Add the student item to the top of the list
-        studentsList.insertBefore(studentItem, studentsList.firstChild);
+        // Reset form
+        contactForm.reset();
+    });
 
-        // Reset the form
-        form.reset();
+    studentsList.addEventListener("click", function (e) {
+        const studentItem = e.target.parentElement;
+
+        if (e.target.classList.contains("showData")) {
+            const dataButton = e.target;
+            const emailData = studentItem.querySelector('.email-data');
+            const phoneData = studentItem.querySelector('.phone-data');
+
+            if (dataButton.textContent === "Show Personal Data") {
+                emailData.style.display = "block";
+                phoneData.style.display = "block";
+                dataButton.textContent = "Hide Personal Data";
+                studentItem.querySelector('.hideData').style.display = "inline-block";
+            } else {
+                emailData.style.display = "none";
+                phoneData.style.display = "none";
+                dataButton.textContent = "Show Personal Data";
+                studentItem.querySelector('.hideData').style.display = "none";
+            }
+        } else if (e.target.classList.contains("hideData")) {
+            const emailData = studentItem.querySelector('.email-data');
+            const phoneData = studentItem.querySelector('.phone-data');
+
+            emailData.textContent = "****";
+            phoneData.textContent = "****";
+            studentItem.querySelector('.showData').textContent = "Show Personal Data";
+            studentItem.querySelector('.hideData').style.display = "none";
+        } else if (e.target.classList.contains("deleteStudent")) {
+            studentsList.removeChild(studentItem);
+        }
+    });
+
+    const itKnowledgeRange = document.getElementById("itKnowledge");
+    const knowledgeValue = document.getElementById("knowledgeValue");
+
+    itKnowledgeRange.addEventListener("input", function () {
+        knowledgeValue.textContent = itKnowledgeRange.value;
     });
 });
